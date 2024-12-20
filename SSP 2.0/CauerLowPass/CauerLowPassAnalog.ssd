@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Dymola on 2024-12-20T13:43:34Z -->
+<ssd:SystemStructureDescription generationDateAndTime="2024-12-20T13:43:34Z" generationTool="Dymola by Dassault Systemes" name="CauerLowPassAnalog" version="2.0" xmlns:smmd="http://www.3ds.com/MyDymolaSpecificNameSpace" xmlns:ssc="http://ssp-standard.org/SSP1/SystemStructureCommon" xmlns:ssd="http://ssp-standard.org/SSP1/SystemStructureDescription" xmlns:ssm="http://ssp-standard.org/SSP1/SystemStructureParameterMapping" xmlns:ssv="http://ssp-standard.org/SSP1/SystemStructureParameterValues">
+    <ssd:System description="Cauer low pass filter with analog components" name="CauerLowPassAnalog">
+        <ssd:Connectors>
+            <ssd:Connector description="Filter coefficient I1" kind="parameter" name="l1">
+                <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Inductance"/>
+            </ssd:Connector>
+            <ssd:Connector description="Filter coefficient I2" kind="parameter" name="l2">
+                <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Inductance"/>
+            </ssd:Connector>
+            <ssd:Connector description="Filter coefficient c1" kind="parameter" name="c1">
+                <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Capacitance"/>
+            </ssd:Connector>
+            <ssd:Connector description="Filter coefficient c2" kind="parameter" name="c2">
+                <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Capacitance"/>
+            </ssd:Connector>
+            <ssd:Connector description="Filter coefficient c3" kind="parameter" name="c3">
+                <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Capacitance"/>
+            </ssd:Connector>
+            <ssd:Connector description="Filter coefficient c4" kind="parameter" name="c4">
+                <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Capacitance"/>
+            </ssd:Connector>
+            <ssd:Connector description="Filter coefficient c5" kind="parameter" name="c5">
+                <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Capacitance"/>
+            </ssd:Connector>
+        </ssd:Connectors>
+        <ssd:ParameterBindings>
+            <ssd:ParameterBinding type="application/x-ssp-parameter-set">
+                <ssd:ParameterValues>
+                    <ssv:ParameterSet name="DefaultParameters" version="1.0">
+                        <ssv:Parameters>
+                            <ssv:Parameter description="Filter coefficient I1" name="l1">
+                                <ssv:Real value="1.304"/>
+                            </ssv:Parameter>
+                            <ssv:Parameter description="Filter coefficient I2" name="l2">
+                                <ssv:Real value="0.8586"/>
+                            </ssv:Parameter>
+                            <ssv:Parameter description="Filter coefficient c1" name="c1">
+                                <ssv:Real value="1.072"/>
+                            </ssv:Parameter>
+                            <ssv:Parameter description="Filter coefficient c2" name="c2">
+                                <ssv:Enumeration value="1/(1.704992^2*l1)"/>
+                            </ssv:Parameter>
+                            <ssv:Parameter description="Filter coefficient c3" name="c3">
+                                <ssv:Real value="1.682"/>
+                            </ssv:Parameter>
+                            <ssv:Parameter description="Filter coefficient c4" name="c4">
+                                <ssv:Enumeration value="1/(1.179945^2*l2)"/>
+                            </ssv:Parameter>
+                            <ssv:Parameter description="Filter coefficient c5" name="c5">
+                                <ssv:Real value="0.7262"/>
+                            </ssv:Parameter>
+                        </ssv:Parameters>
+                    </ssv:ParameterSet>
+                </ssd:ParameterValues>
+            </ssd:ParameterBinding>
+        </ssd:ParameterBindings>
+        <ssd:Elements>
+            <ssd:Component name="G" type="text/x-modelica; path=Modelica.Electrical.Analog.Basic.Ground">
+                <ssd:Connectors>
+                    <ssd:Connector kind="unspecified" name="p">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.Pin"/>
+                        <ssd:ConnectorGeometry x="0.5" y="0.5"/>
+                        <!-- rotation=270 -->
+                    </ssd:Connector>
+                </ssd:Connectors>
+                <ssd:ElementGeometry x1="-10" x2="10" y1="-90" y2="-70"/>
+            </ssd:Component>
+            <ssd:Component name="C1" type="text/x-modelica; path=Modelica.Electrical.Analog.Basic.Capacitor">
+                <ssd:Connectors>
+                    <ssd:Connector description="Positive electrical pin" kind="unspecified" name="p">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.PositivePin"/>
+                        <ssd:ConnectorGeometry x="0" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Negative electrical pin" kind="unspecified" name="n">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.NegativePin"/>
+                        <ssd:ConnectorGeometry x="1" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Capacitance" kind="parameter" name="C">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Capacitance"/>
+                    </ssd:Connector>
+                </ssd:Connectors>
+                <ssd:ElementGeometry x1="-70" x2="-50" y1="-30" y2="-10"/>
+                <!-- rotation=270 -->
+                <ssd:ParameterBindings>
+                    <ssd:ParameterBinding type="application/x-ssp-parameter-set">
+                        <ssd:ParameterValues>
+                            <ssv:ParameterSet name="DefaultParameters" version="1.0">
+                                <ssv:Parameters>
+                                    <ssv:Parameter name="C">
+                                        <ssv:Enumeration value="c1"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="v.start">
+                                        <ssv:Real value="0"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="v.fixed">
+                                        <ssv:Boolean value="true"/>
+                                    </ssv:Parameter>
+                                </ssv:Parameters>
+                            </ssv:ParameterSet>
+                        </ssd:ParameterValues>
+                    </ssd:ParameterBinding>
+                </ssd:ParameterBindings>
+            </ssd:Component>
+            <ssd:Component name="C2" type="text/x-modelica; path=Modelica.Electrical.Analog.Basic.Capacitor">
+                <ssd:Connectors>
+                    <ssd:Connector description="Positive electrical pin" kind="unspecified" name="p">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.PositivePin"/>
+                        <ssd:ConnectorGeometry x="0" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Negative electrical pin" kind="unspecified" name="n">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.NegativePin"/>
+                        <ssd:ConnectorGeometry x="1" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Capacitance" kind="parameter" name="C">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Capacitance"/>
+                    </ssd:Connector>
+                </ssd:Connectors>
+                <ssd:ElementGeometry x1="-40" x2="-20" y1="20" y2="40"/>
+                <ssd:ParameterBindings>
+                    <ssd:ParameterBinding type="application/x-ssp-parameter-set">
+                        <ssd:ParameterValues>
+                            <ssv:ParameterSet name="DefaultParameters" version="1.0">
+                                <ssv:Parameters>
+                                    <ssv:Parameter name="C">
+                                        <ssv:Enumeration value="c2"/>
+                                    </ssv:Parameter>
+                                </ssv:Parameters>
+                            </ssv:ParameterSet>
+                        </ssd:ParameterValues>
+                    </ssd:ParameterBinding>
+                </ssd:ParameterBindings>
+            </ssd:Component>
+            <ssd:Component name="C3" type="text/x-modelica; path=Modelica.Electrical.Analog.Basic.Capacitor">
+                <ssd:Connectors>
+                    <ssd:Connector description="Positive electrical pin" kind="unspecified" name="p">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.PositivePin"/>
+                        <ssd:ConnectorGeometry x="0" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Negative electrical pin" kind="unspecified" name="n">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.NegativePin"/>
+                        <ssd:ConnectorGeometry x="1" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Capacitance" kind="parameter" name="C">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Capacitance"/>
+                    </ssd:Connector>
+                </ssd:Connectors>
+                <ssd:ElementGeometry x1="-10" x2="10" y1="-30" y2="-10"/>
+                <!-- rotation=270 -->
+                <ssd:ParameterBindings>
+                    <ssd:ParameterBinding type="application/x-ssp-parameter-set">
+                        <ssd:ParameterValues>
+                            <ssv:ParameterSet name="DefaultParameters" version="1.0">
+                                <ssv:Parameters>
+                                    <ssv:Parameter name="C">
+                                        <ssv:Enumeration value="c3"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="v.start">
+                                        <ssv:Real value="0"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="v.fixed">
+                                        <ssv:Boolean value="true"/>
+                                    </ssv:Parameter>
+                                </ssv:Parameters>
+                            </ssv:ParameterSet>
+                        </ssd:ParameterValues>
+                    </ssd:ParameterBinding>
+                </ssd:ParameterBindings>
+            </ssd:Component>
+            <ssd:Component name="C4" type="text/x-modelica; path=Modelica.Electrical.Analog.Basic.Capacitor">
+                <ssd:Connectors>
+                    <ssd:Connector description="Positive electrical pin" kind="unspecified" name="p">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.PositivePin"/>
+                        <ssd:ConnectorGeometry x="0" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Negative electrical pin" kind="unspecified" name="n">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.NegativePin"/>
+                        <ssd:ConnectorGeometry x="1" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Capacitance" kind="parameter" name="C">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Capacitance"/>
+                    </ssd:Connector>
+                </ssd:Connectors>
+                <ssd:ElementGeometry x1="20" x2="40" y1="20" y2="40"/>
+                <ssd:ParameterBindings>
+                    <ssd:ParameterBinding type="application/x-ssp-parameter-set">
+                        <ssd:ParameterValues>
+                            <ssv:ParameterSet name="DefaultParameters" version="1.0">
+                                <ssv:Parameters>
+                                    <ssv:Parameter name="C">
+                                        <ssv:Enumeration value="c4"/>
+                                    </ssv:Parameter>
+                                </ssv:Parameters>
+                            </ssv:ParameterSet>
+                        </ssd:ParameterValues>
+                    </ssd:ParameterBinding>
+                </ssd:ParameterBindings>
+            </ssd:Component>
+            <ssd:Component name="C5" type="text/x-modelica; path=Modelica.Electrical.Analog.Basic.Capacitor">
+                <ssd:Connectors>
+                    <ssd:Connector description="Positive electrical pin" kind="unspecified" name="p">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.PositivePin"/>
+                        <ssd:ConnectorGeometry x="0" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Negative electrical pin" kind="unspecified" name="n">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.NegativePin"/>
+                        <ssd:ConnectorGeometry x="1" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Capacitance" kind="parameter" name="C">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Capacitance"/>
+                    </ssd:Connector>
+                </ssd:Connectors>
+                <ssd:ElementGeometry x1="50" x2="70" y1="-30" y2="-10"/>
+                <!-- rotation=270 -->
+                <ssd:ParameterBindings>
+                    <ssd:ParameterBinding type="application/x-ssp-parameter-set">
+                        <ssd:ParameterValues>
+                            <ssv:ParameterSet name="DefaultParameters" version="1.0">
+                                <ssv:Parameters>
+                                    <ssv:Parameter name="C">
+                                        <ssv:Enumeration value="c5"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="v.start">
+                                        <ssv:Real value="0"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="v.fixed">
+                                        <ssv:Boolean value="true"/>
+                                    </ssv:Parameter>
+                                </ssv:Parameters>
+                            </ssv:ParameterSet>
+                        </ssd:ParameterValues>
+                    </ssd:ParameterBinding>
+                </ssd:ParameterBindings>
+            </ssd:Component>
+            <ssd:Component name="L1" type="text/x-modelica; path=Modelica.Electrical.Analog.Basic.Inductor">
+                <ssd:Connectors>
+                    <ssd:Connector description="Positive electrical pin" kind="unspecified" name="p">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.PositivePin"/>
+                        <ssd:ConnectorGeometry x="0" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Negative electrical pin" kind="unspecified" name="n">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.NegativePin"/>
+                        <ssd:ConnectorGeometry x="1" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Inductance" kind="parameter" name="L">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Inductance"/>
+                    </ssd:Connector>
+                </ssd:Connectors>
+                <ssd:ElementGeometry x1="-40" x2="-20" y1="60" y2="80"/>
+                <ssd:ParameterBindings>
+                    <ssd:ParameterBinding type="application/x-ssp-parameter-set">
+                        <ssd:ParameterValues>
+                            <ssv:ParameterSet name="DefaultParameters" version="1.0">
+                                <ssv:Parameters>
+                                    <ssv:Parameter name="L">
+                                        <ssv:Enumeration value="l1"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="i.start">
+                                        <ssv:Real value="0"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="i.fixed">
+                                        <ssv:Boolean value="true"/>
+                                    </ssv:Parameter>
+                                </ssv:Parameters>
+                            </ssv:ParameterSet>
+                        </ssd:ParameterValues>
+                    </ssd:ParameterBinding>
+                </ssd:ParameterBindings>
+            </ssd:Component>
+            <ssd:Component name="L2" type="text/x-modelica; path=Modelica.Electrical.Analog.Basic.Inductor">
+                <ssd:Connectors>
+                    <ssd:Connector description="Positive electrical pin" kind="unspecified" name="p">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.PositivePin"/>
+                        <ssd:ConnectorGeometry x="0" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Negative electrical pin" kind="unspecified" name="n">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.NegativePin"/>
+                        <ssd:ConnectorGeometry x="1" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Inductance" kind="parameter" name="L">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Inductance"/>
+                    </ssd:Connector>
+                </ssd:Connectors>
+                <ssd:ElementGeometry x1="20" x2="40" y1="60" y2="80"/>
+                <ssd:ParameterBindings>
+                    <ssd:ParameterBinding type="application/x-ssp-parameter-set">
+                        <ssd:ParameterValues>
+                            <ssv:ParameterSet name="DefaultParameters" version="1.0">
+                                <ssv:Parameters>
+                                    <ssv:Parameter name="L">
+                                        <ssv:Enumeration value="l2"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="i.start">
+                                        <ssv:Real value="0"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="i.fixed">
+                                        <ssv:Boolean value="true"/>
+                                    </ssv:Parameter>
+                                </ssv:Parameters>
+                            </ssv:ParameterSet>
+                        </ssd:ParameterValues>
+                    </ssd:ParameterBinding>
+                </ssd:ParameterBindings>
+            </ssd:Component>
+            <ssd:Component name="R1" type="text/x-modelica; path=Modelica.Electrical.Analog.Basic.Resistor">
+                <ssd:Connectors>
+                    <ssd:Connector description="Resistance at temperature T_ref" kind="parameter" name="R">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Resistance"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Reference temperature" kind="parameter" name="T_ref">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Temperature"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort - T_ref))" kind="parameter" name="alpha">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.LinearTemperatureCoefficient"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Positive electrical pin" kind="unspecified" name="p">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.PositivePin"/>
+                        <ssd:ConnectorGeometry x="0" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Negative electrical pin" kind="unspecified" name="n">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.NegativePin"/>
+                        <ssd:ConnectorGeometry x="1" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="= true, if heatPort is enabled" kind="parameter" name="useHeatPort">
+                        <ssc:Boolean/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Fixed device temperature if useHeatPort = false" kind="parameter" name="T">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Temperature"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Conditional heat port" kind="unspecified" name="heatPort">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a"/>
+                        <ssd:ConnectorGeometry x="0.5" y="0"/>
+                    </ssd:Connector>
+                </ssd:Connectors>
+                <ssd:ElementGeometry x1="-100" x2="-80" y1="20" y2="40"/>
+                <ssd:ParameterBindings>
+                    <ssd:ParameterBinding type="application/x-ssp-parameter-set">
+                        <ssd:ParameterValues>
+                            <ssv:ParameterSet name="DefaultParameters" version="1.0">
+                                <ssv:Parameters>
+                                    <ssv:Parameter name="R">
+                                        <ssv:Real value="1"/>
+                                    </ssv:Parameter>
+                                </ssv:Parameters>
+                            </ssv:ParameterSet>
+                        </ssd:ParameterValues>
+                    </ssd:ParameterBinding>
+                </ssd:ParameterBindings>
+            </ssd:Component>
+            <ssd:Component name="R2" type="text/x-modelica; path=Modelica.Electrical.Analog.Basic.Resistor">
+                <ssd:Connectors>
+                    <ssd:Connector description="Resistance at temperature T_ref" kind="parameter" name="R">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Resistance"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Reference temperature" kind="parameter" name="T_ref">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Temperature"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort - T_ref))" kind="parameter" name="alpha">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.LinearTemperatureCoefficient"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Positive electrical pin" kind="unspecified" name="p">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.PositivePin"/>
+                        <ssd:ConnectorGeometry x="0" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Negative electrical pin" kind="unspecified" name="n">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.NegativePin"/>
+                        <ssd:ConnectorGeometry x="1" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="= true, if heatPort is enabled" kind="parameter" name="useHeatPort">
+                        <ssc:Boolean/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Fixed device temperature if useHeatPort = false" kind="parameter" name="T">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Temperature"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Conditional heat port" kind="unspecified" name="heatPort">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a"/>
+                        <ssd:ConnectorGeometry x="0.5" y="0"/>
+                    </ssd:Connector>
+                </ssd:Connectors>
+                <ssd:ElementGeometry x1="90" x2="110" y1="-30" y2="-10"/>
+                <!-- rotation=270 -->
+                <ssd:ParameterBindings>
+                    <ssd:ParameterBinding type="application/x-ssp-parameter-set">
+                        <ssd:ParameterValues>
+                            <ssv:ParameterSet name="DefaultParameters" version="1.0">
+                                <ssv:Parameters>
+                                    <ssv:Parameter name="R">
+                                        <ssv:Real value="1"/>
+                                    </ssv:Parameter>
+                                </ssv:Parameters>
+                            </ssv:ParameterSet>
+                        </ssd:ParameterValues>
+                    </ssd:ParameterBinding>
+                </ssd:ParameterBindings>
+            </ssd:Component>
+            <ssd:Component name="V" type="text/x-modelica; path=Modelica.Electrical.Analog.Sources.StepVoltage">
+                <ssd:Connectors>
+                    <ssd:Connector description="Height of step" kind="parameter" name="V">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Voltage"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Positive electrical pin" kind="unspecified" name="p">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.PositivePin"/>
+                        <ssd:ConnectorGeometry x="0" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Negative electrical pin" kind="unspecified" name="n">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Electrical.Analog.Interfaces.NegativePin"/>
+                        <ssd:ConnectorGeometry x="1" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Voltage offset" kind="parameter" name="offset">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Voltage"/>
+                    </ssd:Connector>
+                    <ssd:Connector description="Time offset" kind="parameter" name="startTime">
+                        <ssc:Binary mime-type="text/x-modelica; path=Modelica.Units.SI.Time"/>
+                    </ssd:Connector>
+                </ssd:Connectors>
+                <ssd:ElementGeometry x1="-110" x2="-90" y1="-20" y2="0"/>
+                <!-- rotation=270 -->
+                <ssd:ParameterBindings>
+                    <ssd:ParameterBinding type="application/x-ssp-parameter-set">
+                        <ssd:ParameterValues>
+                            <ssv:ParameterSet name="DefaultParameters" version="1.0">
+                                <ssv:Parameters>
+                                    <ssv:Parameter name="startTime">
+                                        <ssv:Real value="1"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="offset">
+                                        <ssv:Real value="0"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="V">
+                                        <ssv:Real value="1"/>
+                                    </ssv:Parameter>
+                                </ssv:Parameters>
+                            </ssv:ParameterSet>
+                        </ssd:ParameterValues>
+                    </ssd:ParameterBinding>
+                </ssd:ParameterBindings>
+            </ssd:Component>
+        </ssd:Elements>
+        <ssd:Connections>
+            <ssd:Connection endConnector="p" endElement="C1" startConnector="n" startElement="R1">
+                <ssd:ConnectionGeometry pointsX="-80 -60 -60" pointsY="30 30 -10"/>
+            </ssd:Connection>
+            <ssd:Connection endConnector="p" endElement="G" startConnector="n" startElement="C1">
+                <ssd:ConnectionGeometry pointsX="-60 -60 0 0" pointsY="-30 -50 -50 -70"/>
+            </ssd:Connection>
+            <ssd:Connection endConnector="p" endElement="C2" startConnector="p" startElement="L1">
+                <ssd:ConnectionGeometry pointsX="-40 -40" pointsY="70 30"/>
+            </ssd:Connection>
+            <ssd:Connection endConnector="p" endElement="C1" startConnector="p" startElement="L1">
+                <ssd:ConnectionGeometry pointsX="-40 -40 -60 -60" pointsY="70 30 30 -10"/>
+            </ssd:Connection>
+            <ssd:Connection endConnector="n" endElement="C2" startConnector="n" startElement="L1">
+                <ssd:ConnectionGeometry pointsX="-20 -20" pointsY="70 30"/>
+            </ssd:Connection>
+            <ssd:Connection endConnector="p" endElement="C3" startConnector="n" startElement="C2">
+                <ssd:ConnectionGeometry pointsX="-20 0 0" pointsY="30 30 -10"/>
+            </ssd:Connection>
+            <ssd:Connection endConnector="p" endElement="C4" startConnector="n" startElement="C2">
+                <ssd:ConnectionGeometry pointsX="-20 20" pointsY="30 30"/>
+            </ssd:Connection>
+            <ssd:Connection endConnector="p" endElement="L2" startConnector="n" startElement="C2">
+                <ssd:ConnectionGeometry pointsX="-20 20 20" pointsY="30 30 70"/>
+            </ssd:Connection>
+            <ssd:Connection endConnector="n" endElement="C4" startConnector="n" startElement="L2">
+                <ssd:ConnectionGeometry pointsX="40 40" pointsY="70 30"/>
+            </ssd:Connection>
+            <ssd:Connection endConnector="p" endElement="C5" startConnector="n" startElement="C4">
+                <ssd:ConnectionGeometry pointsX="40 60 60" pointsY="30 30 -10"/>
+            </ssd:Connection>
+            <ssd:Connection endConnector="p" endElement="R2" startConnector="n" startElement="C4">
+                <ssd:ConnectionGeometry pointsX="40 100 100" pointsY="30 30 -10"/>
+            </ssd:Connection>
+            <ssd:Connection endConnector="n" endElement="C3" startConnector="n" startElement="C1">
+                <ssd:ConnectionGeometry pointsX="-60 -60 0 0" pointsY="-30 -50 -50 -30"/>
+            </ssd:Connection>
+            <ssd:Connection endConnector="n" endElement="C5" startConnector="n" startElement="C1">
+                <ssd:ConnectionGeometry pointsX="-60 -60 60 60" pointsY="-30 -50 -50 -30"/>
+            </ssd:Connection>
+            <ssd:Connection endConnector="n" endElement="C1" startConnector="n" startElement="R2">
+                <ssd:ConnectionGeometry pointsX="100 100 -60 -60" pointsY="-30 -50 -50 -30"/>
+            </ssd:Connection>
+            <ssd:Connection endConnector="p" endElement="V" startConnector="p" startElement="R1">
+                <ssd:ConnectionGeometry pointsX="-100 -100" pointsY="30 0"/>
+            </ssd:Connection>
+            <ssd:Connection endConnector="p" endElement="G" startConnector="n" startElement="V">
+                <ssd:ConnectionGeometry pointsX="-100 -100 0" pointsY="-20 -70 -70"/>
+            </ssd:Connection>
+        </ssd:Connections>
+        <ssd:SystemGeometry x1="-120" x2="120" y1="-100" y2="100"/>
+        <ssd:GraphicalElements>
+            <ssd:Note text="CauerLowPassAnalog" x1="-120" x2="120" y1="100" y2="80"/>
+        </ssd:GraphicalElements>
+        <ssd:Annotations>
+            <ssc:Annotation type="com.3ds.ssp">
+                <smmd:ModelicaMetaData>
+                    <UserAnnotation key="description" value="Cauer low pass filter with analog components"/>
+                    <UserAnnotation key="documentation" value="&lt;html>&#xa;&lt;p>The example Cauer Filter is a low-pass-filter of the fifth order. It is realized using an analog network. The voltage source V is the input voltage (step), and the R2.p.v is the filter output voltage. The pulse response is calculated.&lt;/p>&#xa;&lt;p>The simulation end time should be 60. Please plot both V.p.v (input voltage) and R2.p.v (output voltage).&lt;/p>&#xa;&lt;/html>"/>
+                    <UserAnnotation key="revisions" value="&lt;html>&#xa;&lt;ul>&#xa;&lt;li>&lt;em>January 13, 2006&lt;/em>&#xa;       by Christoph Clauss&lt;br>&#xa;       included into Modelica Standard Library&lt;/li>&#xa;&lt;li>&lt;em>September 15, 2005&lt;/em>&#xa;       by Peter Trappe designed and by Teresa Schlegel&lt;br>&#xa;       initially modelled.&lt;/li>&#xa;&lt;/ul>&#xa;&lt;/html>"/>
+                    <UserAnnotation key="name" value="CauerLowPassAnalog"/>
+                    <UserAnnotation key="fullName" value="CauerLowPassAnalog"/>
+                    <UserAnnotation key="uses" value="Modelica(version=&quot;4.0.0&quot;)"/>
+                </smmd:ModelicaMetaData>
+            </ssc:Annotation>
+        </ssd:Annotations>
+    </ssd:System>
+    <ssd:DefaultExperiment startTime="0" stopTime="60"/>
+</ssd:SystemStructureDescription>
