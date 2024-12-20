@@ -6,5 +6,6 @@ The pulse response is calculated.
 
 The simulation end time should be 60 seconds. Please plot both V.p.v (input voltage) and R2.p.v (output voltage).
 
-The example comes from the Modelica Standard Library 4.0 and the SSD file was exported by Dymola 2025x.
+![Simulation Result](CauerLowPassAnalog.png)
 
+The example comes from the Modelica Standard Library 4.0 and the SSD file was exported by Dymola 2025x.
